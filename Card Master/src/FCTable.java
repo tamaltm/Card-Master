@@ -29,4 +29,36 @@ public class FCTable extends Pile {
         }
 
     }
+    public Card clickedCard(int y){
+        int index = y / 20;
+        if(index < this.cards.size()){
+            
+            
+                return (Card) cards.toArray()[index];
+            
+        }
+        return (Card) cards.toArray()[cards.size()-1];
+    }
+    public boolean moveTo(Foundation foundation, Card selectedCard) {
+        if(foundation.accepts(selectedCard)){
+            return true;
+        }
+        return false;
+    }
+    public void moveTo(FCTable destination, Card selectedCard) {
+        if(destination.accepts(selectedCard)){
+            destination.push(this.pop());
+        }
+    }
+    boolean accepts(Card selectedCard) {
+        if(!isEmpty()){
+            return this.topCard().getValue()==selectedCard.getValue()+1 && this.topCard().getColor()!=selectedCard.getColor();
+        }
+        return selectedCard.getValue() == 13; 
+    }
+    public void moveTo(FreeCell destination, Card selectedCard) {
+        if(destination.accepts()){
+            destination.push(this.pop());
+        }
+    }
 }

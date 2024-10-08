@@ -6,6 +6,7 @@ public class FCpanel extends JPanel{
     static FreeCell[] frecells;
     static FCTable[] fctables;
     static Deck deck ;
+
     FCpanel(){
         setBackground(Color.GREEN);
         super.setLayout(null);
@@ -30,6 +31,9 @@ public class FCpanel extends JPanel{
             }
             add(fctables[i]);
         }
+        FCmovelistener f = new FCmovelistener();
+        addMouseListener(f);
+        addMouseMotionListener(f);
     }
 
         
@@ -37,4 +41,23 @@ public class FCpanel extends JPanel{
     public static Deck getDeck() {
         return deck;
     }
+
+
+
+    public static Foundation[] getFoundation() {
+        return foundation;
+    }
+
+
+
+    public static FreeCell[] getFrecells() {
+        return frecells;
+    }
+
+
+
+    public static FCTable[] getFctables() {
+        return fctables;
+    }
+    
 }
