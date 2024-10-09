@@ -16,7 +16,7 @@ public class WelcomeMenu extends JFrame {
     JLabel wc;
     Container c;
 
-    WelcomeMenu() {
+    WelcomeMenu() {// setBackground(Color.WHITE);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(640, 500);
         setLocationRelativeTo(null);
@@ -76,7 +76,7 @@ public class WelcomeMenu extends JFrame {
         Spider.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Klondike button clicked!");
-                new FreeCellmain();
+                new SpiderMain();
                 
             }
         });

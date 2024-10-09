@@ -3,13 +3,13 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 public class Card {
-   //public static String cardBackname = "back001",directory="cards";
-     int value;
-     String suit;
-    boolean Up ;
+
+    int value;
+    String suit;
+    boolean Up;
     static Suit s;
-     Image image;
-     Color color;
+    Image image;
+    Color color;
 
     public Card(int value, Suit s) {
         this.value = value;
@@ -34,77 +34,72 @@ public class Card {
                 break;
         }
         Up = false;
-        ImageIcon ii = new ImageIcon(getClass().getResource("cards"+CardFile(s, value)));
+        ImageIcon ii = new ImageIcon(getClass().getResource("cards" + CardFile(s, value)));
         image = ii.getImage();
     }
 
-
-
-
     String CardFile(Suit s, int v) {
-        char c='a';
-        if(s==Suit.CLUBS){
+        char c = 'a';
+        if (s == Suit.CLUBS) {
             c = 'c';
-        }else if(s==Suit.HEARTS){
+        } else if (s == Suit.HEARTS) {
             c = 'h';
-        }else if(s==Suit.SPADES){
+        } else if (s == Suit.SPADES) {
             c = 's';
-        }else if(s == Suit.DIAMONDS){
+        } else if (s == Suit.DIAMONDS) {
             c = 'd';
         }
-        
+
         if (v < 10) {
             return "/0" + v + c + ".gif";
         } else {
-            return  "/"+v + c + ".gif";
+            return "/" + v + c + ".gif";
         }
     }
-    
-    
-
 
     public Color getColor() {
         return color;
     }
-    
-    public boolean IsUp(){
+
+    public boolean IsUp() {
         return Up;
     }
+
     @Override
     public String toString() {
-        return value + suit ;
+        return value + suit;
     }
-    public void showFace(){
+
+    public void showFace() {
         Up = true;
     }
-    Image CardImage(){
+
+    Image CardImage() {
         return image;
     }
-    
-    public  int getValue() {
+
+    public int getValue() {
         return value;
     }
 
-    public  String getSuit() {
+    public String getSuit() {
         return suit;
     }
 
-
-
-
-    public static Image cardBack(){
+    public static Image cardBack() {
         ImageIcon i = new ImageIcon(Card.class.getResource("cards/back001.gif"));
         Image image = i.getImage();
         return image;
     }
 
-    public static Image outline(){
+    public static Image outline() {
         ImageIcon i = new ImageIcon(Card.class.getResource("cards/bottom01.gif"));
         Image image = i.getImage();
         return image;
     }
-    public static Image base(int k){
-        ImageIcon i = new ImageIcon(Card.class.getResource("cards/fpBase0"+k+".gif"));
+
+    public static Image base(int k) {
+        ImageIcon i = new ImageIcon(Card.class.getResource("cards/fpBase0" + k + ".gif"));
         Image image = i.getImage();
         return image;
     }

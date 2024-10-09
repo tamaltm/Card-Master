@@ -32,10 +32,7 @@ public class FCTable extends Pile {
     public Card clickedCard(int y){
         int index = y / 20;
         if(index < this.cards.size()){
-            
-            
-                return (Card) cards.toArray()[index];
-            
+                return (Card) cards.toArray()[index];  
         }
         return (Card) cards.toArray()[cards.size()-1];
     }
@@ -51,6 +48,7 @@ public class FCTable extends Pile {
             destination.push(this.pop());
         }
     }
+    
     boolean accepts(Card selectedCard) {
         if(!isEmpty()){
             return this.topCard().getValue()==selectedCard.getValue()+1 && this.topCard().getColor()!=selectedCard.getColor();

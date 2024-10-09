@@ -2,18 +2,20 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.Collections;
 
-public class Deck extends Pile {
+public class SPdeck extends Pile {
 
-    Deck(int x, int y) {
+    SPdeck(int x, int y) {
         super(x, y);
         super.setSize(72, 96);
+        for(int i=0;i<2;i++){
         for (Suit suit : Suit.values()) {
             for (int j = 1; j <= 13; ++j) {
-                Card card = new Card(j, suit);
+                Card card = new Card(j, Suit.SPADES);
                 push(card);
                 System.out.println(card);
             }
         }
+    }
         Collections.shuffle(cards);
     }
 
