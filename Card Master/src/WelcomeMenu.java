@@ -16,7 +16,7 @@ public class WelcomeMenu extends JFrame {
     JLabel wc;
     Container c;
 
-    WelcomeMenu() {// setBackground(Color.WHITE);
+    WelcomeMenu() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(640, 500);
         setLocationRelativeTo(null);

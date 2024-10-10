@@ -23,4 +23,7 @@ public class SPpanel extends JPanel{
         addMouseMotionListener(s);
 
     }
+    public static SPtable[] getTables() {
+        return sptables;
+    }
 }

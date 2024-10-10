@@ -31,6 +31,13 @@ public class SPtable extends Pile{
             destination.push(this.pop());
         }
     }
+    public Card clickedCard(int y){
+        int index = y / 20;
+        if(index < this.cards.size()){
+                return (Card) cards.toArray()[index];  
+        }
+        return (Card) cards.toArray()[cards.size()-1];
+    }
 
     private boolean accepts(Card selectedCard) {
         if(!isEmpty()){
@@ -38,6 +45,8 @@ public class SPtable extends Pile{
         }
         return selectedCard.getValue() == 13; 
     }
+
+   
     
     
 }

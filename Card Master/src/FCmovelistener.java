@@ -21,7 +21,6 @@ public class FCmovelistener extends MouseInputAdapter {
             for (Foundation foundation : FCpanel.getFoundation()) {
                 if (tableSelect.moveTo(foundation, selectedCard)) {
                     foundation.push(tableSelect.pop());
-
                     if (!tableSelect.isEmpty()) {
                         tableSelect.topCard().showFace();
                     }
