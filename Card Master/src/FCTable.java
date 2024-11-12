@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayDeque;
+import java.util.Deque;
 public class FCTable extends Pile {
 
     public FCTable(int x, int y) {
@@ -43,11 +45,27 @@ public class FCTable extends Pile {
         }
         return false;
     }
-    public void moveTo(FCTable destination, Card selectedCard) {
-        if(destination.accepts(selectedCard)){
-            destination.push(this.pop());
-        }
-    }
+    public void moveTo(FCTable destination, Card card) {
+		if (!this.isEmpty() || card.getValue() == 13) {
+			if (destination.accepts(card)) {
+                 Deque<Card> toBeMovedCards = new ArrayDeque<>();
+                 while(!this.isEmpty()) {
+                	 Card tmp = this.pop();
+                	 toBeMovedCards.push(tmp);
+                	 if(tmp.equals(card)) {
+                		 break;
+                	 }
+                 }
+                 while(!toBeMovedCards.isEmpty()) {
+                	 destination.push(toBeMovedCards.pop());
+                 }
+			}
+		}
+		
+		if(!this.isEmpty()) {
+			this.topCard().showFace();
+		}
+	}
     
     boolean accepts(Card selectedCard) {
         if(!isEmpty()){

@@ -1,5 +1,7 @@
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.awt.Color;
 public class SPtable extends Pile{
 
@@ -26,11 +28,27 @@ public class SPtable extends Pile{
             }
         }
     }
-    public void moveTo(SPtable destination, Card selectedCard) {
-        if(destination.accepts(selectedCard)){
-            destination.push(this.pop());
-        }
-    }
+    public void moveTo(SPtable destination, Card card) {
+		if (!this.isEmpty() || card.getValue() == 13) {
+			if (destination.accepts(card)) {
+                 Deque<Card> toBeMovedCards = new ArrayDeque<>();
+                 while(!this.isEmpty()) {
+                	 Card tmp = this.pop();
+                	 toBeMovedCards.push(tmp);
+                	 if(tmp.equals(card)) {
+                		 break;
+                	 }
+                 }
+                 while(!toBeMovedCards.isEmpty()) {
+                	 destination.push(toBeMovedCards.pop());
+                 }
+			}
+		}
+		
+		if(!this.isEmpty()) {
+			this.topCard().showFace();
+		}
+	}
     public Card clickedCard(int y){
         int index = y / 20;
         if(index < this.cards.size()){

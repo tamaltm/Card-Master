@@ -14,7 +14,7 @@ public class SPmovelistener extends MouseInputAdapter{
         if(pressed instanceof SPtable){
             System.out.println("ST pressed");
             tableSelect = (SPtable) pressed;
-            selectedCard = tableSelect.clickedCard(e.getY());
+            selectedCard = tableSelect.clickedCard(e.getY()-150);
 
         }if(pressed instanceof SPdeck){
             

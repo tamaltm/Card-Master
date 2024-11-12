@@ -17,7 +17,7 @@ public class FCmovelistener extends MouseInputAdapter {
         if (pressed instanceof FCTable) {
             System.out.println("T");
             tableSelect = (FCTable) pressed;
-            selectedCard = tableSelect.clickedCard(e.getY());
+            selectedCard = tableSelect.clickedCard(e.getY()-150);
             for (Foundation foundation : FCpanel.getFoundation()) {
                 if (tableSelect.moveTo(foundation, selectedCard)) {
                     foundation.push(tableSelect.pop());
