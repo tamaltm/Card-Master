@@ -57,7 +57,7 @@ public class MoveListener extends MouseInputAdapter {
         if(pressed instanceof Table){
             waste = null;
             tableSelect = (Table) pressed;
-            selectedCard = tableSelect.clickedCard(e.getY());
+            selectedCard = tableSelect.clickedCard(e.getY()-150);
             for(Foundation foundation : Gamepanel.getPiles()){
                 if(tableSelect.moveTo(foundation,selectedCard)){
                     foundation.push(tableSelect.pop());

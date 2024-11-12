@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class Table extends Pile {
 
@@ -78,13 +80,26 @@ public class Table extends Pile {
 
 
     public void moveTo(Table destination, Card card) {
-        if(destination.accepts(card)){
-            destination.push(this.pop());
-        }
-        if(!this.isEmpty()){
-            this.topCard().showFace();
-        }
-    }
+		if (!this.isEmpty() || card.getValue() == 13) {
+			if (destination.accepts(card)) {
+                 Deque<Card> toBeMovedCards = new ArrayDeque<>();
+                 while(!this.isEmpty()) {
+                	 Card tmp = this.pop();
+                	 toBeMovedCards.push(tmp);
+                	 if(tmp.equals(card)) {
+                		 break;
+                	 }
+                 }
+                 while(!toBeMovedCards.isEmpty()) {
+                	 destination.push(toBeMovedCards.pop());
+                 }
+			}
+		}
+		
+		if(!this.isEmpty()) {
+			this.topCard().showFace();
+		}
+	}
 
 
 
