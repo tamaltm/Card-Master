@@ -18,7 +18,7 @@ public class Main extends JFrame{
 
     }
     public static void main(String[] args) {
-       new WelcomeMenu();
+      // new WelcomeMenu();
         new Main();
         //Card card = new Card(10, Suit.CLUBS);
         //System.out.println(card);
