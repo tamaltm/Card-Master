@@ -2,7 +2,7 @@ import javax.swing.JPanel;
 import java.awt.Color;
 public class Hpanel extends JPanel{
     static Deck deck;
-    static HTable[] player1,player2,player3,player4;
+    static HTable[] player1,player2,player3,player4,playerMoves;
 
     Hpanel(){
         setBackground(Color.GREEN);
@@ -33,5 +33,26 @@ public class Hpanel extends JPanel{
             player4[i].push(deck.pop());
             add(player4[i]);
         }
+        playerMoves = new HTable[4];
+        Hmovelistener ml = new Hmovelistener();
+        addMouseListener(ml);
+        addMouseMotionListener(ml);
     }
+
+    public static HTable[] getTable1() {
+        return player1;
+    }
+
+    public static HTable[] getTable2() {
+        return player2;
+    }
+
+    public static HTable[] getTable3() {
+        return player3;
+    }
+
+    public static HTable[] getTable4() {
+        return player4;
+    }
+    
 }

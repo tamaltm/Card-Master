@@ -24,4 +24,15 @@ public class HTable extends Pile{
             }
         }
     }
+
+    public Card clickedCard(int y){
+        int index = y / 20;
+        if(index < this.cards.size()){
+            Card returnMe = (Card) cards.toArray()[index];
+            if(returnMe.IsUp()){
+                return returnMe;
+            }
+        }
+        return (Card) cards.toArray()[cards.size()-1];
+    }
 }
