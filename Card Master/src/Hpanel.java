@@ -20,6 +20,7 @@ public class Hpanel extends JPanel{
             player2[i].push(deck.pop());
             add(player2[i]);
         }
+        
         player3 = new HTable[13];
         for(int i=0;i<player3.length;i++){
             player3[i] = new HTable(460-i*30,30);

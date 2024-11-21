@@ -7,6 +7,7 @@ public class HTable extends Pile{
         super.setSize(500,600);
         super.setOpaque(false);
     }
+    
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
