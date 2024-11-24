@@ -1,6 +1,7 @@
-import java.awt.Graphics2D;
+//import java.awt.Graphics2D;
 import java.awt.Graphics;
-import java.awt.Color;
+import java.util.Stack;
+//import java.awt.Color;
 public class HTable extends Pile{
     public HTable(int x,int y){
         super(x,y);
@@ -10,11 +11,11 @@ public class HTable extends Pile{
     
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g;
-        g2d.setColor(Color.white);
-        g2d.drawLine(0, 0, 72, 0);
-        g2d.drawLine(0,0,0,96);
-        g2d.drawLine(71,0,71,96);
+      //  Graphics2D g2d = (Graphics2D) g;
+        // g2d.setColor(Color.white);
+        // g2d.drawLine(0, 0, 72, 0);
+        // g2d.drawLine(0,0,0,96);
+        // g2d.drawLine(71,0,71,96);
 
         int cardinc = 0;
         if(!isEmpty()){
@@ -35,4 +36,10 @@ public class HTable extends Pile{
         }
         return (Card) cards.toArray()[cards.size()-1];
     }
+
+    public Stack<Card> getCards() {
+    return this.cards;
+}
+    
+    
 }

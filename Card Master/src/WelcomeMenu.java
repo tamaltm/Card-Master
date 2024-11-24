@@ -56,7 +56,7 @@ public class WelcomeMenu extends JFrame {
     }
 
     public static void main(String[] args) {
-        WelcomeMenu menu = new WelcomeMenu();
+       new WelcomeMenu();
 
      
         Klondike.addActionListener(new ActionListener() {
