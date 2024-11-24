@@ -7,7 +7,7 @@ public class Hmain extends JFrame{
     Hmain(){
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         hpanel = new Hpanel();
-        hpanel.setPreferredSize(new Dimension(640,500));
+        hpanel.setPreferredSize(new Dimension(690,600));
         add(hpanel);
         pack();
         setLocationRelativeTo(null);
