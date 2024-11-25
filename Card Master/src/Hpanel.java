@@ -11,9 +11,9 @@ public class Hpanel extends JPanel{
     static HTable[] player1,player2,player3,player4;
     Hdeck player1move,player2move,player3move,player4move;
     JLabel  player1label,player2label,player3label,player4label,message;
-    private int[] scores = {0, 0, 0, 0}; // Scores for players 1 to 4
-    private int totalRounds = 13; // Total number of rounds (based on cards per player)
-     // Counter for rounds played
+    private int[] scores = {0, 0, 0, 0}; 
+    private int totalRounds = 13; 
+     
     
 
     Hpanel(){
@@ -102,7 +102,7 @@ public class Hpanel extends JPanel{
     JDialog scoreDialog = new JDialog();
     scoreDialog.setTitle("Game Over - Scores");
     scoreDialog.setSize(300, 200);
-    scoreDialog.setLocationRelativeTo(this); // Center on Hpanel
+    scoreDialog.setLocationRelativeTo(this); 
     scoreDialog.setModal(true);
 
     String[] columnNames = {"Player", "Score"};

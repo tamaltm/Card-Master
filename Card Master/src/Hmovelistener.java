@@ -18,7 +18,7 @@ public class Hmovelistener extends MouseInputAdapter {
     int count = 0,scores[]={0,0,0,0},totalRounds=0;
     JLabel message = new JLabel();
     private int roundsPlayed = 0;
-    private Hpanel hpanel; // Reference to the main panel
+    private Hpanel hpanel; 
 
 public Hmovelistener(Hdeck player1Deck, Hdeck player2Deck, Hdeck player3Deck, Hdeck player4Deck, 
                      JLabel message, int[] scores, int totalRounds, Hpanel hpanel) {
@@ -29,7 +29,7 @@ public Hmovelistener(Hdeck player1Deck, Hdeck player2Deck, Hdeck player3Deck, Hd
     this.message = message;
     this.scores = scores;
     this.totalRounds = totalRounds;
-    this.hpanel = hpanel; // Store the reference
+    this.hpanel = hpanel; 
 }
 
 
@@ -113,38 +113,51 @@ public Hmovelistener(Hdeck player1Deck, Hdeck player2Deck, Hdeck player3Deck, Hd
         message.setText("Round ended. Winner: Player " + roundWinner)
     );
 
-        // Use a Timer for non-blocking delay
+        
         Timer delay = new Timer(1000, e -> clearTablesAndStartNewRound());
         delay.setRepeats(false);
         delay.start();
     }
 
     private void clearTablesAndStartNewRound() {
+        
+        int roundPenalty = 0;
+        roundPenalty += p1.pop().getPenalty();
+        roundPenalty += p2.pop().getPenalty();
+        roundPenalty += p3.pop().getPenalty();
+        roundPenalty += p4.pop().getPenalty();
+        
+
+        
+        System.out.println("roundPenalty "+roundPenalty);
+        scores[roundWinner - 1] += roundPenalty;
+        for(int i=0;i<4;i++){
+            System.out.println("Score["+(i+1)+"]"+scores[i]);
+        }
+        roundsPlayed++;
+    
+        
         if (roundsPlayed >= totalRounds) {
             SwingUtilities.invokeLater(() -> hpanel.showScoreTable());
+            return;
         }
+    
         
-        SwingUtilities.invokeLater(() -> 
-        message.setText("Player'"+roundWinner+"s Turn")
-    );
-        if (!p1.isEmpty()) p1.pop();
-        if (!p2.isEmpty()) p2.pop();
-        if (!p3.isEmpty()) p3.pop();
-        if (!p4.isEmpty()) p4.pop();
-
         max = 0;
         currentSuit = null;
         roundEnded = false;
-
         currentTurn = roundWinner;
-
-        System.out.println("Next round starts with Player " + currentTurn);
-
+    
+        SwingUtilities.invokeLater(() -> 
+            message.setText("Player " + currentTurn + "'s Turn")
+        );
+        
         p1.repaint();
         p2.repaint();
         p3.repaint();
         p4.repaint();
     }
+    
 
     private boolean isInTableArray(HTable table, HTable[] tableArray) {
         if (tableArray == null) return false;

@@ -10,6 +10,7 @@ public class Card {
     static Suit s;
     Image image;
     Color color;
+    Suit sit;
 
     public Card(int value, Suit s) {
         this.value = value;
@@ -84,6 +85,14 @@ public class Card {
 
     public String getSuit() {
         return suit;
+    }
+    public int getPenalty(){
+        if(this.suit=="h"){
+            return 1;
+        }else if(this.suit=="s" && this.value==12){
+            return 13;
+        }
+        return 0;
     }
 
     public static Image cardBack() {
