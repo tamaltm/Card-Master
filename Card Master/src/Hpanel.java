@@ -21,9 +21,9 @@ public class Hpanel extends JPanel{
         super.setLayout(null);
         deck = new Deck(ALLBITS, ABORT);
         player1 = new HTable[13];
-        player1label = new JLabel("Player1");
+        player1label = new JLabel("Player1 ");
         player1label.setFont(new Font("Arial", Font.TRUETYPE_FONT, 12));
-        player1label.setBounds(350,495,60,25);
+        player1label.setBounds(300,415,100,25);
         add(player1label);
         for(int i=0;i<player1.length;i++){
             player1[i] = new HTable(490-i*30,440);
@@ -32,7 +32,7 @@ public class Hpanel extends JPanel{
         }
         player2label = new JLabel("Player4");
         player2label.setFont(new Font("Arial", Font.TRUETYPE_FONT, 12));
-        player2label.setBounds(50,20,60,25);
+        player2label.setBounds(20,20,100,25);
         add(player2label);
         player2 = new HTable[13];
         for(int i=0;i<player2.length;i++){
@@ -42,7 +42,7 @@ public class Hpanel extends JPanel{
         }
         player3label = new JLabel("Player3");
         player3label.setFont(new Font("Arial", Font.TRUETYPE_FONT, 12));
-        player3label.setBounds(350,5,60,25);
+        player3label.setBounds(310,5,100,25);
         add(player3label);
         player3 = new HTable[13];
         for(int i=0;i<player3.length;i++){
@@ -52,7 +52,7 @@ public class Hpanel extends JPanel{
         }
         player4label = new JLabel("Player2");
         player4label.setFont(new Font("Arial", Font.TRUETYPE_FONT, 12));
-        player4label.setBounds(620,30,60,25);
+        player4label.setBounds(590,30,100,25);
         add(player4label);
         player4 = new HTable[13];
         for(int i=0;i<player4.length;i++){
@@ -74,7 +74,7 @@ public class Hpanel extends JPanel{
         message.setFont(new Font("Arial", Font.TRUETYPE_FONT, 15));
         message.setBounds(250, 550, 400, 40);
         
-        Hmovelistener ml = new Hmovelistener(player1move, player2move, player3move, player4move, message, scores, totalRounds,this);
+        Hmovelistener ml = new Hmovelistener(player1move, player2move, player3move, player4move, message, scores, totalRounds,this,player1label,player2label,player3label,player4label);
         addMouseListener(ml);
         addMouseMotionListener(ml);
         add(message);

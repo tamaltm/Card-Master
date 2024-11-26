@@ -16,12 +16,12 @@ public class Hmovelistener extends MouseInputAdapter {
     String currentSuit = null;
     int currentTurn = 1, roundWinner = 0;
     int count = 0,scores[]={0,0,0,0},totalRounds=0;
-    JLabel message = new JLabel();
+    JLabel message,player1label,player2label,player3label,player4label = new JLabel();
     private int roundsPlayed = 0;
     private Hpanel hpanel; 
 
 public Hmovelistener(Hdeck player1Deck, Hdeck player2Deck, Hdeck player3Deck, Hdeck player4Deck, 
-                     JLabel message, int[] scores, int totalRounds, Hpanel hpanel) {
+                     JLabel message, int[] scores, int totalRounds, Hpanel hpanel,JLabel player1label,JLabel player2label,JLabel player3label,JLabel player4label) {
     this.p1 = player1Deck;
     this.p2 = player2Deck;
     this.p3 = player3Deck;
@@ -29,7 +29,11 @@ public Hmovelistener(Hdeck player1Deck, Hdeck player2Deck, Hdeck player3Deck, Hd
     this.message = message;
     this.scores = scores;
     this.totalRounds = totalRounds;
-    this.hpanel = hpanel; 
+    this.hpanel = hpanel;
+    this.player1label = player1label;
+    this.player2label = player2label;
+    this.player3label = player3label;
+    this.player4label = player4label;
 }
 
 
@@ -151,7 +155,18 @@ public Hmovelistener(Hdeck player1Deck, Hdeck player2Deck, Hdeck player3Deck, Hd
         SwingUtilities.invokeLater(() -> 
             message.setText("Player " + currentTurn + "'s Turn")
         );
-        
+        SwingUtilities.invokeLater(() -> 
+        player1label.setText("Player1 penalty: "+scores[0])
+        );
+        SwingUtilities.invokeLater(() -> 
+        player4label.setText("Player2 penalty: "+scores[1])
+        );
+        SwingUtilities.invokeLater(() -> 
+        player3label.setText("Player3 penalty: "+scores[2])
+        );
+        SwingUtilities.invokeLater(() -> 
+        player2label.setText("Player4 penalty: "+scores[3])
+    );
         p1.repaint();
         p2.repaint();
         p3.repaint();
