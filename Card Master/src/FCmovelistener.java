@@ -1,5 +1,6 @@
 import java.awt.Component;
 import java.awt.event.MouseEvent;
+import java.util.Arrays;
 
 import javax.swing.event.MouseInputAdapter;
 
@@ -8,7 +9,11 @@ public class FCmovelistener extends MouseInputAdapter {
     FCTable tableSelect = null;
     Foundation foundselect = null;
     FreeCell freeCellselect = null;
+    private FCpanel fcpanel;
 
+    public FCmovelistener(FCpanel fcpanel){
+        this.fcpanel = fcpanel;
+    }
     @Override
     public void mousePressed(MouseEvent e) {
         super.mousePressed(e);
@@ -68,6 +73,16 @@ public class FCmovelistener extends MouseInputAdapter {
                 FCTable source = tableSelect;
                 FCTable destination = (FCTable) released;
                 source.moveTo(destination, selectedCard);
+                int sourceIndex = Arrays.asList(FCpanel.fctables).indexOf(source);
+                    int destinationIndex = Arrays.asList(FCpanel.fctables).indexOf(destination);
+
+                    if (sourceIndex != -1) {
+                    
+                    fcpanel.updateTableCounter(sourceIndex, source.cardCount());
+                    }
+                    if (destinationIndex != -1) {
+                    fcpanel.updateTableCounter(destinationIndex, destination.cardCount());
+                    }
                 source.repaint();
                 destination.repaint();
             }

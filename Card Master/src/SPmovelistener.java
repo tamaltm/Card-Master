@@ -1,11 +1,17 @@
 import java.awt.Component;
 import java.awt.event.MouseEvent;
+import java.util.Arrays;
+
 import javax.swing.event.MouseInputAdapter;
 public class SPmovelistener extends MouseInputAdapter{
     Card selectedCard = null;
     SPtable tableSelect = null;
     SPdeck deckSelect = null;
+    SPpanel sppanel;
 
+    public SPmovelistener(SPpanel sppanel){
+        this.sppanel = sppanel;
+    }
 
     int count = 0;
     public void mousePressed(MouseEvent e) {
@@ -43,6 +49,16 @@ public class SPmovelistener extends MouseInputAdapter{
                 SPtable source = tableSelect;
                 SPtable destination = (SPtable) released;
                 source.moveTo(destination, selectedCard);
+                int sourceIndex = Arrays.asList(SPpanel.getTables()).indexOf(source);
+                    int destinationIndex = Arrays.asList(SPpanel.getTables()).indexOf(destination);
+
+                    if (sourceIndex != -1) {
+                    
+                    sppanel.updateTableCounter(sourceIndex, source.cardCount());
+                    }
+                    if (destinationIndex != -1) {
+                    sppanel.updateTableCounter(destinationIndex, destination.cardCount());
+                    }
                 source.repaint();
                 destination.repaint();
 

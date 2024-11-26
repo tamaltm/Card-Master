@@ -64,6 +64,10 @@ public class SPtable extends Pile{
         return selectedCard.getValue() == 13; 
     }
 
+    public int cardCount() {
+        return cards.size();
+    }
+
    
     
     

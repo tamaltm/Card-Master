@@ -1,5 +1,6 @@
 import java.awt.Component;
 import java.awt.event.MouseEvent;
+import java.util.Arrays;
 
 import javax.swing.event.MouseInputAdapter;
 
@@ -9,6 +10,11 @@ public class MoveListener extends MouseInputAdapter {
     Card selectedCard = null;
     Foundation foundselect = null;
     Table tableSelect = null;
+    private Gamepanel gamePanel;
+
+    public MoveListener(Gamepanel gamePanel) {
+        this.gamePanel = gamePanel;
+    }
     
     @Override
     public void mousePressed(MouseEvent e) {
@@ -68,6 +74,7 @@ public class MoveListener extends MouseInputAdapter {
                     break;
                 }
             }
+             
         }
 
 
@@ -99,9 +106,20 @@ public class MoveListener extends MouseInputAdapter {
                 }else if (tableSelect!=null){
                     Table source = tableSelect;
                     Table destination = (Table) released;
-
                     source.moveTo(destination,selectedCard);
+
+                    int sourceIndex = Arrays.asList(Gamepanel.tpiles).indexOf(source);
+                    int destinationIndex = Arrays.asList(Gamepanel.tpiles).indexOf(destination);
+
+                    if (sourceIndex != -1) {
+                    
+                    gamePanel.updateTableCounter(sourceIndex, source.cardCount());
+                    }
+                    if (destinationIndex != -1) {
+                    gamePanel.updateTableCounter(destinationIndex, destination.cardCount());
+                    }
                     source.repaint();
+                    destination.repaint();
                 }else if (foundselect != null){
                     Foundation source = foundselect;
                     Table destination = (Table) released;

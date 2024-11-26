@@ -35,11 +35,14 @@ public class WelcomeMenu extends JFrame {
         FreeCell.setBounds(300, 100, 120, 30);
         Spider = new JButton("Spider");
         Spider.setBounds(100,200,120,30);
+        Hearts = new JButton("Hearts");
+        Hearts.setBounds(300,200,120,30);
 
         p.add(wc);
         p.add(Klondike);
         p.add(FreeCell);
         p.add(Spider);
+        p.add(Hearts);
 
 
         setContentPane(p); 
@@ -61,23 +64,25 @@ public class WelcomeMenu extends JFrame {
      
         Klondike.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Klondike button clicked!");
                 new Main();
                 
             }
         });
         FreeCell.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Klondike button clicked!");
                 new FreeCellmain();
                 
             }
         });
         Spider.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.out.println("Klondike button clicked!");
                 new SpiderMain();
                 
+            }
+        });
+        Hearts.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new Hmain(); 
             }
         });
     }

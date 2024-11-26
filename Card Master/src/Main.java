@@ -8,7 +8,7 @@ public class Main extends JFrame{
     Gamepanel gamepanel;
    // public static final int Panel_Width = 640,Panel_height = 500;
     Main(){
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         gamepanel = new Gamepanel();
         gamepanel.setPreferredSize(new Dimension(640,500));
         add(gamepanel);

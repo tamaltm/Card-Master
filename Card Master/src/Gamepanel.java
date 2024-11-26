@@ -1,5 +1,6 @@
 import java.awt.Color;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Gamepanel extends JPanel{
@@ -7,6 +8,7 @@ public class Gamepanel extends JPanel{
       static Waste waste;
       static Foundation[] piles;
       static Table[] tpiles;
+       private JLabel[] tableCounters;
 
     Gamepanel(){
         setBackground(Color.GREEN);
@@ -21,12 +23,16 @@ public class Gamepanel extends JPanel{
             add(piles[i]);
         }
         tpiles = new Table[7];
+        tableCounters = new JLabel[tpiles.length];
         for(int i=0;i<tpiles.length;++i){
             tpiles[i] = new Table(20+80*i,150,i+2);
             add(tpiles[i]);
+            tableCounters[i] = new JLabel("Table " + (i + 1) + ": 0");
+            tableCounters[i].setBounds(20 + 80 * i, 130, 80, 20);
+            add(tableCounters[i]);
         }
         
-        MoveListener ml = new MoveListener();
+        MoveListener ml = new MoveListener(this);
         addMouseListener(ml);
         addMouseMotionListener(ml);
         
@@ -40,6 +46,8 @@ public class Gamepanel extends JPanel{
     public static Foundation[] getPiles() {
         return piles;
     }
-    
+    public void updateTableCounter(int index, int count) {
+        tableCounters[index].setText("Table " + (index + 1) + ": " + count);
+    }
     
 }

@@ -86,6 +86,8 @@ public class Card {
     public String getSuit() {
         return suit;
     }
+
+    
     public int getPenalty(){
         if(this.suit=="h"){
             return 1;
@@ -94,6 +96,8 @@ public class Card {
         }
         return 0;
     }
+    
+    
 
     public static Image cardBack() {
         ImageIcon i = new ImageIcon(Card.class.getResource("cards/back001.gif"));

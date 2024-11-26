@@ -66,7 +66,9 @@ public class FCTable extends Pile {
 			this.topCard().showFace();
 		}
 	}
-    
+    public int cardCount() {
+        return cards.size(); 
+    }
     boolean accepts(Card selectedCard) {
         if(!isEmpty()){
             return this.topCard().getValue()==selectedCard.getValue()+1 && this.topCard().getColor()!=selectedCard.getColor();

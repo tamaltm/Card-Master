@@ -104,10 +104,14 @@ public class Table extends Pile {
 
 
     public boolean moveTo(Foundation foundation, Card selectedCard) {
-        if(foundation.accepts(selectedCard)){
-            
+        if(foundation.accepts(selectedCard)){         
             return true;
         }
         return false;
     }
+    public int cardCount() {
+        return cards.size(); 
+    }
+    
+    
 }
