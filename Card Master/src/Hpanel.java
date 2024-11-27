@@ -16,8 +16,8 @@ public class Hpanel extends JPanel{
      
     
 
-    Hpanel(){
-        setBackground(Color.GREEN);
+    Hpanel(Color backgroundColor){
+        setBackground(backgroundColor);
         super.setLayout(null);
         deck = new Deck(ALLBITS, ABORT);
         player1 = new HTable[13];
@@ -62,13 +62,13 @@ public class Hpanel extends JPanel{
         }
         
         
-        player1move = new Hdeck(330, 280);
+        player1move = new Hdeck(300, 290);
         add(player1move);
-        player2move = new Hdeck(430, 220);
+        player2move = new Hdeck(400, 230);
         add(player2move);
-        player3move = new Hdeck(330, 140);
+        player3move = new Hdeck(300, 150);
         add(player3move);
-        player4move = new Hdeck(230, 220);
+        player4move = new Hdeck(200, 230);
         add(player4move);
         message = new JLabel("Welcome to Hearts");
         message.setFont(new Font("Arial", Font.TRUETYPE_FONT, 15));

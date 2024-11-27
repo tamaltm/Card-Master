@@ -30,6 +30,7 @@ public class SPmovelistener extends MouseInputAdapter{
                 count++;
             }
         }
+        e.getComponent().repaint();
     }
 
     private void push_cards() {
@@ -49,6 +50,11 @@ public class SPmovelistener extends MouseInputAdapter{
                 SPtable source = tableSelect;
                 SPtable destination = (SPtable) released;
                 source.moveTo(destination, selectedCard);
+
+                if (destination.hasCompleteSequence()) {
+                    destination.removeCompleteSequence();
+                }
+                
                 int sourceIndex = Arrays.asList(SPpanel.getTables()).indexOf(source);
                     int destinationIndex = Arrays.asList(SPpanel.getTables()).indexOf(destination);
 
@@ -64,6 +70,7 @@ public class SPmovelistener extends MouseInputAdapter{
 
             }
         }
+        e.getComponent().repaint();
     }
     
 

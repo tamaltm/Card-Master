@@ -10,8 +10,8 @@ public class Gamepanel extends JPanel{
       static Table[] tpiles;
        private JLabel[] tableCounters;
 
-    Gamepanel(){
-        setBackground(Color.GREEN);
+    Gamepanel(Color backgroundColor){
+        setBackground(backgroundColor);
         super.setLayout(null);
         deck = new Deck(500,20);
         add(deck);

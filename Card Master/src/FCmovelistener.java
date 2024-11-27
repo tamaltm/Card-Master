@@ -36,12 +36,21 @@ public class FCmovelistener extends MouseInputAdapter {
 
         }
         if (pressed instanceof FreeCell) {
+            
             System.out.println("F");
             freeCellselect = (FreeCell) pressed;
-            //tableSelect = null;
-           // foundselect = null;
             selectedCard = freeCellselect.topCard();
-            
+            for (Foundation foundation : FCpanel.getFoundation()) {
+                if (freeCellselect.moveTo(foundation, selectedCard)) {
+                    foundation.push(freeCellselect.pop());
+                    freeCellselect = null;
+                    selectedCard = null;
+                    tableSelect = null;
+                    break;
+                }
+            }
+            selectedCard = null;
+            freeCellselect = null;
         }
 
         if (pressed instanceof Foundation) {
@@ -102,7 +111,12 @@ public class FCmovelistener extends MouseInputAdapter {
                 source.moveTo(destination, selectedCard);
                 source.repaint();
                 destination.repaint();
+
             }
+            foundselect = null;
+            freeCellselect = null;
+            tableSelect = null;
+            selectedCard = null;
         }
         e.getComponent().repaint();
         foundselect = null;

@@ -32,4 +32,11 @@ public class FreeCell extends Pile {
         return false;
     }
 
+    public boolean moveTo(Foundation foundation, Card selectedCard) {
+        if(foundation.accepts(selectedCard)){
+            return true;
+        }
+        return false;
+    }
+
 }

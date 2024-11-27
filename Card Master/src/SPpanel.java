@@ -6,8 +6,8 @@ public class SPpanel extends JPanel{
     static SPtable[] sptables;
     static SPdeck deck;
     private JLabel[] tableCounters;
-    SPpanel(){
-        setBackground(Color.GREEN);
+    SPpanel(Color Background){
+        setBackground(Background);
         super.setLayout(null);
         deck = new SPdeck(890, 630);
         add(deck);

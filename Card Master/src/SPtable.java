@@ -68,7 +68,35 @@ public class SPtable extends Pile{
         return cards.size();
     }
 
-   
+    public boolean hasCompleteSequence() {
+       
+        if (cards.size() < 13) return false;
+    
+        
+        for (int i = 0; i < 13; i++) {
+            Card current = cards.get(cards.size() - 1 - i);
+            Card next = i < 12 ? cards.get(cards.size() - 2 - i) : null;
+    
+            if (next != null) {
+                
+                if (current.getValue() != next.getValue() + 1 || current.getSuit() != next.getSuit()) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    public void removeCompleteSequence() {
+        if (hasCompleteSequence()) {
+            
+            for (int i = 0; i < 13; i++) {
+                cards.pop();
+            }
+    
+            System.out.println("Sequence removed!");
+        }
+    }
+    
     
     
 }

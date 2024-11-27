@@ -9,8 +9,8 @@ public class FCpanel extends JPanel{
     static Deck deck ;
     private JLabel[] tableCounters;
 
-    FCpanel(){
-        setBackground(Color.GREEN);
+    FCpanel(Color backgroundColor){
+        setBackground(backgroundColor);
         super.setLayout(null);
         deck = new Deck(PROPERTIES, HEIGHT);
         foundation = new Foundation[4];
