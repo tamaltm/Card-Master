@@ -17,6 +17,7 @@ public class Gamepanel extends JPanel{
         add(deck);
         waste = new Waste(420, 20);
         add(waste);
+        
         piles = new Foundation[4];
         for(int i=0;i<piles.length;++i){
             piles[i] = new Foundation(20+80*i, 20, i+1);
